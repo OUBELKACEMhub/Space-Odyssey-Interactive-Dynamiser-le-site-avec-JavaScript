@@ -35,32 +35,45 @@
       background-size: cover;
       background-position: center;
     }
-    .favorite-icon {
-  color: white;
-  cursor: pointer;
-  font-size: 24px;
-  transition: color 0.3s;
-}
-.favorite-icon.active {
-  color: gold;
-}
-
-
+   
 .favoris-list {
+  background-color: antiquewhite;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 2px;
+  grid-template-columns: repeat(3, 230px); 
+  gap: 0;
   padding: 10px;
   margin-top: 0.5rem;
+  width: 700px;
 }
 
 .favoris-list .card {
-      display: flex;
-      flex-direction: column;
-      border: 4px solid black;
-      border-radius: 10px;
-      overflow: hidden;
-    }
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.favoris-list .card:hover {
+  transform: scale(1.03);
+}
+
+
+    .favorite-icon {
+  color: white;          /* اللون الإفتراضي */
+  cursor: pointer;
+  font-size: 28px;
+  transition: color 0.2s ease;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  user-select: none;
+}
+
+.favorite-icon.active {
+  color: gold;           /* اللون ملي تكون مختارة */
+}
+ 
 
 
 </style>
@@ -162,7 +175,7 @@
 
   <div class="Mission-container" id="missionsGrid">  </div>
 
-  <form  class="favoris-list" id="favoris-list">
+  <form  class="favoris-list" id="favoris-list" style="display:none;">
 
 </form>
 
@@ -296,114 +309,169 @@ let missions = [
 
 
 
-function toggleFavorite(icon) {
-  if (icon.style.color === "white") {
-    icon.style.color = "gold";   
-  } else {
-    icon.style.color = "white";   
-  }
-}
+
 
 // afficher les missions
+const favorites = [];
+
+// --- affiche les missions (assure-toi que chaque mission a la class "mission" et champs data-*) ---
 function displayMissions(missionsToDisplay) {
   const container = document.getElementById('missionsGrid');
-  container.innerHTML = ''; 
+  container.innerHTML = '';
 
-  missionsToDisplay.forEach(mission => {
+  missionsToDisplay.forEach((mission, idx) => {
     const div = document.createElement('div');
-    div.classList.add('cell');
+    div.className = 'cell mission';
 
     div.innerHTML = `
-      <div 
-      style="background-image:url('images/${mission.image}'); height:200px; background-size:cover; background-position:center;">
-    <div class="favorite-icon" onclick="toggleFavorite(this)" style="font-size:28px; cursor:pointer; color:white;">&#9733;</div>
+      <div style="background-image:url('images/${mission.image}'); height:200px; background-size:cover; background-position:center; position:relative;">
+        <div class="favorite-icon" 
+             data-name="${escapeHtml(mission.name)}"
+             data-agency="${escapeHtml(mission.agency)}"
+             data-year="${mission.year}"
+             onclick="toggleFavorite(this)" 
+             style="position:absolute; top:10px; right:10px; font-size:28px; cursor:pointer; ">
+          &#9733;
+        </div>
       </div>
       <div class="Missions-descrption2">
-        <h3>${mission.name}</h3>
+        <h3 class="mission-name">${escapeHtml(mission.name)}</h3>
         <ul>
-          <li><strong>Agence:</strong> ${mission.agency}</li>
-          <li><strong>Année:</strong> ${mission.year}</li>
-          <li><strong>Type:</strong> ${mission.type}</li>
-          <li><strong>Objectif:</strong> ${mission.objectif}</li>
+          <li class="mission-agency"><strong>Agence:</strong> ${escapeHtml(mission.agency)}</li>
+          <li class="mission-year"><strong>Année:</strong> ${mission.year}</li>
+          <li><strong>Type:</strong> ${escapeHtml(mission.type)}</li>
+          <li><strong>Objectif:</strong> ${escapeHtml(mission.objectif)}</li>
         </ul>
       </div>
     `;
     container.appendChild(div);
   });
+
+  
+  applySavedFavoritesToIcons();
 }
-// filtrage dynamique a
-function filterMissions() {
-  const agency = document.getElementById('ParAgence').value;
-  const year = document.getElementById('ParDate').value;
-  const type = document.getElementById('ParType').value;
-  const searchText = document.querySelector('.recherche input').value.toLowerCase();
 
-  const filtered = missions.filter(mission => {
-    return (agency === '' || mission.agency === agency) &&
-           (year === '' || mission.year == year) &&
-           (type === '' || mission.type === type) &&
-           (
-             mission.name.toLowerCase().includes(searchText) ||
-             mission.agency.toLowerCase().includes(searchText) ||
-             mission.type.toLowerCase().includes(searchText) ||
-             mission.objectif.toLowerCase().includes(searchText) ||
-             mission.year.toString().includes(searchText)
-           );
-  });
-
-  displayMissions(filtered);
+// helper pour échapper HTML (sécurité simple)
+function escapeHtml(text) {
+  if (!text && text !== 0) return '';
+  return String(text)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 
-document.getElementById('ParAgence').addEventListener('change', filterMissions);
-document.getElementById('ParDate').addEventListener('change', filterMissions);
-document.getElementById('ParType').addEventListener('change', filterMissions);
-document.querySelector('.recherche input').addEventListener('input', filterMissions);
+function toggleFavorite(iconEl) {
+  const name = iconEl.dataset.name;
+  const agency = iconEl.dataset.agency;
+  const year = iconEl.dataset.year;
 
+  // نجيب الصورة من المسار الأصلي فالمissions
+  const missionData = missions.find(m => m.name === name);
+  const image = missionData ? missionData.image : '';
 
-displayMissions(missions);
+  iconEl.classList.toggle('active');
 
-
-
-
-
-
-const favorites = [];
-
-document.querySelectorAll('.favorite-icon').forEach(icon => {
-  icon.addEventListener('click', function() {
-    const mission = this.closest('.mission');
-    const name = mission.querySelector('.mission-name').textContent;
-    const agency = mission.querySelector('.mission-agency').textContent;
-    const year = mission.querySelector('.mission-year').textContent;
-
-    this.classList.toggle('active');
-
-    if (this.classList.contains('active')) {
-      // Ajouter la mission dans la liste des favoris
-      favorites.push({ name, agency, year });
-    } else {
-      // Supprimer la mission si n'est pas selectionne
-      const index = favorites.findIndex(m => m.name === name);
-      if (index !== -1) favorites.splice(index, 1);
+  if (iconEl.classList.contains('active')) {
+    if (!favorites.find(f => f.name === name)) {
+      favorites.push({ name, agency, year, image }); // ✅ زدنا image هنا
     }
+  } else {
+    const i = favorites.findIndex(f => f.name === name);
+    if (i !== -1) favorites.splice(i, 1);
+  }
 
-    // update le formulaire des favoris
-    updateFavoritesForm();
-  });
-});
+  saveFavorites();
+  renderFavoritesForm();
+}
 
-function updateFavoritesForm() {
-  const list = document.getElementById('favoritesList');
-  list.innerHTML = '';
 
-  favorites.forEach(m => {
-    const li = document.createElement('li');
-    li.textContent = `${m.name} (${m.agency}, ${m.year})`;
-    list.appendChild(li);
+// afficher la liste des favoris dans le formulaire (#favoris-list)
+function renderFavoritesForm() {
+  const form = document.getElementById('favoris-list');
+  form.innerHTML = ''; // نحيدو القديم باش ما يتضاعفوش الكروت
+
+  favorites.forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.padding = '0';
+    card.style.margin = '6px';
+    card.style.overflow = 'hidden';
+    card.style.border = '4px solid black';
+    card.style.borderRadius = '10px';
+    
+    
+
+    card.innerHTML = `
+      <div style="background-image:url('images/${f.image}'); height:150px; background-size:cover; background-position:center;"></div>
+      <div style="padding:8px; color :black;">
+        <strong style="color : ">${escapeHtml(f.name)}</strong><br>
+        <small>${escapeHtml(f.agency)} — ${escapeHtml(f.year)}</small><br>
+        <button type="button" onclick="removeFavorite('${escapeAttr(f.name)}')" 
+          style="cursor:pointer;margin-top:5px;padding:6px 8px;border-radius:6px;border:1px solid #ccc;background:black;color:white;">
+          Remove
+        </button>
+      </div>
+    `;
+    form.appendChild(card);
   });
 }
 
+// remove favorite depuis la liste (aussi met à jour l'icone correspondante)
+function removeFavorite(name) {
+  const idx = favorites.findIndex(f => f.name === name);
+  if (idx !== -1) favorites.splice(idx, 1);
+
+  // désactiver l'icone correspondante dans la grille
+  document.querySelectorAll('.favorite-icon').forEach(ic => {
+    if (ic.dataset.name === name) ic.classList.remove('active');
+  });
+
+  saveFavorites();
+  renderFavoritesForm();
+}
+
+function clearAllFavorites() {
+  favorites.length = 0;
+  document.querySelectorAll('.favorite-icon').forEach(ic => ic.classList.remove('active'));
+  saveFavorites();
+  renderFavoritesForm();
+}
+
+// persistence localStorage
+function saveFavorites() {
+  localStorage.setItem('space_favorites', JSON.stringify(favorites));
+}
+function loadFavorites() {
+  const saved = JSON.parse(localStorage.getItem('space_favorites') || '[]');
+  if (Array.isArray(saved) && saved.length) {
+    saved.forEach(s => { if (!favorites.find(f => f.name === s.name)) favorites.push(s); });
+  }
+}
+
+// après que les icons existent، on applique active sur celles sauvegardées
+function applySavedFavoritesToIcons() {
+  if (favorites.length === 0) return;
+  document.querySelectorAll('.favorite-icon').forEach(ic => {
+    if (favorites.find(f => f.name === ic.dataset.name)) {
+      ic.classList.add('active');
+    } else {
+      ic.classList.remove('active');
+    }
+  });
+}
+
+// petits helpers pour échapper attributs utilisés dans onclick
+function escapeAttr(s) {
+  return String(s).replace(/'/g, "\\'");
+}
+
+// --- initialisation ---
+loadFavorites();
+displayMissions(missions); // rend la grille
+renderFavoritesForm(); 
 
 </script>
 
