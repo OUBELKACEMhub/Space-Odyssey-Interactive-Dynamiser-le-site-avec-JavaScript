@@ -18,7 +18,7 @@
 .header .header1-contenu {
     display: flex;
     width: 100%;
-    height: 30%;
+    height: 70px;
     padding-bottom: 10px;
     align-items: center;
     justify-content: space-between;

@@ -35,10 +35,34 @@
       background-size: cover;
       background-position: center;
     }
-/*  */
+    .favorite-icon {
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+.favorite-icon.active {
+  color: gold;
+}
 
 
- 
+.favoris-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 2px;
+  padding: 10px;
+  margin-top: 0.5rem;
+}
+
+.favoris-list .card {
+      display: flex;
+      flex-direction: column;
+      border: 4px solid black;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+
 </style>
 <body>
       <nav class="header">
@@ -55,6 +79,7 @@
         <option value="ar">Arabic</option>
         <option value="fr">Français</option>
         </select>
+        <div class="icon"><img src="icons/star-plan.png" alt="star-plan" style="width: 28px;"></div>
          <div class="iconNotfc"><img src="icons/Header Notification button.png" alt="Notificationicons"></div>
           <div class="avatar"><img src="icons/Avatar.png" alt="profile"></div>
      </div>
@@ -124,7 +149,7 @@
        <option value="future">future </option>
      </select></div>
 
-        <div class="recherche"><button name="search" value="search">search</button></div>
+        <div class="recherche"><input type="text" placeholder="search"></div>
     </div>
     </div>
   
@@ -136,6 +161,10 @@
 
 
   <div class="Mission-container" id="missionsGrid">  </div>
+
+  <form  class="favoris-list" id="favoris-list">
+
+</form>
 
    
 
@@ -266,6 +295,16 @@ let missions = [
 ];
 
 
+
+function toggleFavorite(icon) {
+  if (icon.style.color === "white") {
+    icon.style.color = "gold";   
+  } else {
+    icon.style.color = "white";   
+  }
+}
+
+// afficher les missions
 function displayMissions(missionsToDisplay) {
   const container = document.getElementById('missionsGrid');
   container.innerHTML = ''; 
@@ -275,7 +314,10 @@ function displayMissions(missionsToDisplay) {
     div.classList.add('cell');
 
     div.innerHTML = `
-      <div style="background-image:url('images/${mission.image}'); height:200px; background-size:cover; background-position:center;"></div>
+      <div 
+      style="background-image:url('images/${mission.image}'); height:200px; background-size:cover; background-position:center;">
+    <div class="favorite-icon" onclick="toggleFavorite(this)" style="font-size:28px; cursor:pointer; color:white;">&#9733;</div>
+      </div>
       <div class="Missions-descrption2">
         <h3>${mission.name}</h3>
         <ul>
@@ -289,24 +331,83 @@ function displayMissions(missionsToDisplay) {
     container.appendChild(div);
   });
 }
-
-// afficher tout les mission
-displayMissions(missions);
-
-                  //filter
-document.querySelector('.recherche button').addEventListener('click', () => {
+// filtrage dynamique a
+function filterMissions() {
   const agency = document.getElementById('ParAgence').value;
   const year = document.getElementById('ParDate').value;
   const type = document.getElementById('ParType').value;
+  const searchText = document.querySelector('.recherche input').value.toLowerCase();
 
   const filtered = missions.filter(mission => {
     return (agency === '' || mission.agency === agency) &&
            (year === '' || mission.year == year) &&
-           (type === '' || mission.type === type);
+           (type === '' || mission.type === type) &&
+           (
+             mission.name.toLowerCase().includes(searchText) ||
+             mission.agency.toLowerCase().includes(searchText) ||
+             mission.type.toLowerCase().includes(searchText) ||
+             mission.objectif.toLowerCase().includes(searchText) ||
+             mission.year.toString().includes(searchText)
+           );
   });
 
   displayMissions(filtered);
+}
+
+
+document.getElementById('ParAgence').addEventListener('change', filterMissions);
+document.getElementById('ParDate').addEventListener('change', filterMissions);
+document.getElementById('ParType').addEventListener('change', filterMissions);
+document.querySelector('.recherche input').addEventListener('input', filterMissions);
+
+
+displayMissions(missions);
+
+
+
+
+
+
+const favorites = [];
+
+document.querySelectorAll('.favorite-icon').forEach(icon => {
+  icon.addEventListener('click', function() {
+    const mission = this.closest('.mission');
+    const name = mission.querySelector('.mission-name').textContent;
+    const agency = mission.querySelector('.mission-agency').textContent;
+    const year = mission.querySelector('.mission-year').textContent;
+
+    this.classList.toggle('active');
+
+    if (this.classList.contains('active')) {
+      // Ajouter la mission dans la liste des favoris
+      favorites.push({ name, agency, year });
+    } else {
+      // Supprimer la mission si n'est pas selectionne
+      const index = favorites.findIndex(m => m.name === name);
+      if (index !== -1) favorites.splice(index, 1);
+    }
+
+    // update le formulaire des favoris
+    updateFavoritesForm();
+  });
 });
+
+function updateFavoritesForm() {
+  const list = document.getElementById('favoritesList');
+  list.innerHTML = '';
+
+  favorites.forEach(m => {
+    const li = document.createElement('li');
+    li.textContent = `${m.name} (${m.agency}, ${m.year})`;
+    list.appendChild(li);
+  });
+}
+
+
 </script>
+
+
+
 
 </html>
