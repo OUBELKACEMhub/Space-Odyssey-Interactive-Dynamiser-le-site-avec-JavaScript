@@ -64,8 +64,46 @@
            <h1  style="font-family: 'orbitron';"> 10 missions célèbres</h1>
         </div>
 
+         <div class="bar-container">
+    <div class="filter">
+        <div class="agence">  <select  id="ParAgence">
+        <option value="">Tous</option>  
+        <option value="NASA">NASA</option>
+        <option value="NASA-ESA">NASA-ESA</option>
+        <option value="NASA-ESA-CSA">NASA-ESA-CSA</option>
+     </select></div>
+        <div class="date">  
+       <select  id="ParDate">
+       <option value=""></option>
+       <option value="1969">1969-07-16</option>
+       <option value="1977">1977-09-05</option>
+       <option value="2004">2004-03-02</option>
+       <option value="2011">2011-11-26</option>
+       <option value="2018">2018-10-20</option>
+       <option value="2022">2022-11-16</option>
+        <option value="2021">2021-12-25</option>
+         
+     </select>
+      </div>
+
+        <div class="type"><select  id="ParType">
+       <option value="">Tous</option>
+       <option value="historique">historique</option>
+       <option value="actuiel">actuiel </option>
+       <option value="future">future </option>
+     </select></div>
+
+        <div class="recherche"><button name="search" value="search">search</button></div>
+    </div>
+    </div>
+  
+
+
+
+
+
            <!-- Mission -->
-  <div class="grid-container" id="missionsGrid">
+  <div class="Mission-container" id="missionsGrid">
 
    
     <div class="cell">
@@ -112,7 +150,7 @@
       <div class="Missions-descrption2">
         <ul>
           <li class="child"><h3>🌌 James Webb</h3></li>
-          <li><b>Agence</b> : NASA / ESA / CSA</li>
+          <li><b>Agence</b> : NASA-ESA-CSA</li>
           <li><b>Date de lancement</b> : 2021</li>
           <li><b>Objectif</b> : Observer les galaxies après le Big Bang.</li>
         </ul>
@@ -132,7 +170,6 @@
       </div>
     </div>
 
-    
     <div class="cell">
       <div class="Missions-image6"></div>
       <div class="Missions-descrption2">
@@ -151,8 +188,8 @@
       <div class="Missions-descrption2">
         <ul>
           <li class="child"><h3>🌕 Artemis Program</h3></li>
-          <li><b>Agence</b> : NASA / ESA</li>
-          <li><b>Date de lancement</b> : 2025</li>
+          <li><b>Agence</b> : NASA-ESA</li>
+          <li><b>Date de lancement</b> : 2025 </li>
           <li><b>Objectif</b> : Ramener l’homme sur la Lune.</li>
         </ul>
       </div>
@@ -164,7 +201,7 @@
       <div class="Missions-descrption2">
         <ul>
           <li class="child"><h3>🛰 Mars Sample Return</h3></li>
-          <li><b>Agence</b> : NASA / ESA</li>
+          <li><b>Agence</b> : NASA-ESA</li>
           <li><b>Date de lancement</b> : 2025</li>
           <li><b>Objectif</b> : Ramener des échantillons martiens.</li>
         </ul>
@@ -177,7 +214,7 @@
       <div class="Missions-descrption2">
         <ul>
           <li class="child"><h3>🪐 LUVOIR Telescope</h3></li>
-          <li><b>Agence</b> : NASA</li>
+          <li><b>Agence</b> : NASA </li>
           <li><b>Date de lancement</b> : 2035</li>
           <li><b>Objectif</b> : Explorer les exoplanètes et galaxies.</li>
         </ul>
@@ -239,6 +276,12 @@
   </footer>
 
 
+
+
+
+        
+        
+</body>
 <script>
   const currentPage = window.location.pathname.split('/').pop();
   const links = document.querySelectorAll('.nav-links a');
@@ -251,8 +294,45 @@
   });
 </script>
 
+<script>
+const searchButton = document.querySelector('.recherche button');
+const agenceSelect = document.getElementById('ParAgence');
+const dateSelect = document.getElementById('ParDate');
+const typeSelect = document.getElementById('ParType');
+const missionsGrid = document.getElementById('missionsGrid');
+const missionCells = missionsGrid.querySelectorAll('.cell');
 
-        
-        
-</body>
+searchButton.addEventListener('click', () => {
+  const agenceValue = agenceSelect.value.toLowerCase();
+  const dateValue = dateSelect.value;
+  const typeValue = typeSelect.value.toLowerCase();
+
+  missionCells.forEach(cell => {
+    const agenceText = cell.querySelector('li:nth-child(2)').textContent.toLowerCase();
+    const dateText = cell.querySelector('li:nth-child(3)').textContent;
+    const year = dateText.match(/\d{4}/)?.[0] || ''; // khraj juste l'année
+    let show = true;
+
+    // Filtrage agence
+    if (agenceValue && !agenceText.includes(agenceValue.toLowerCase())) {
+      show = false;
+    }
+
+    // Filtrage date
+    if (dateValue && year !== dateValue) {
+      show = false;
+    }
+
+    // Filtrage type
+    if (typeValue) {
+      if (typeValue === 'historique' && parseInt(year) >= 2020) show = false;
+      if (typeValue === 'actuiel' && (parseInt(year) < 2000 || parseInt(year) > 2025)) show = false;
+      if (typeValue === 'future' && parseInt(year) <= 2025) show = false;
+    }
+
+    cell.style.display = show ? '' : 'none';
+  });
+});
+</script>
+
 </html>

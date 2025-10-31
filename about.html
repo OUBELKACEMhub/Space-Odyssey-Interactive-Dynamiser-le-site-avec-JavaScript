@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <title>Space Odyssey</title>
+</head>
+<body >
+  
+  <nav class="header">
+    <div class="header1-contenu">
+      <div class="logo1">
+      <img src="images/Blue Colorful Minimalist Astronomy Logo 1.png" alt="icon">
+      </div>
+       <div id="shead1">
+      
+        <input type="text" id="search" name="search" placeholder="Search...">
+        <select name="language" id="language">
+        <option value="en">English</option>
+        <option value="ar">Arabic</option>
+        <option value="fr">Français</option>
+        </select>
+         <div class="iconNotfc"><img src="icons/Header Notification button.png" alt="Notificationicons"></div>
+          <div class="avatar"><img src="icons/Avatar.png" alt="profile"></div>
+     </div>
+      
+    </div>
+<div  class="header2-contenu">
+     <div  class="header2-contenu">
+      <div class="links-social">
+        <a href="https://instagram.com/Nasa" target="_blank" aria-label="SpaceX Instagram">
+          <img src="images/image-about/icons8-instagram-50.png" alt="Instagram logo" width="24">
+        </a>
+        <a href="https://x.com/Nasa" target="_blank" aria-label="NASA on X">
+          <img src="images/image-about/icons8-linkedin-50.png" alt="Twitter logo" width="24">
+        </a>
+        <a href="https://facebook.com/Nasa" target="_blank" aria-label="NASA Facebook">
+          <img src="images/image-about/icons8-twitter-50.png" alt="Be logo" width="24">
+        </a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html" >HOME</a></li>
+        <li><a href="planets.html" >PLANETS</a></li>
+        <li><a href="mission.html" >MISSION</a></li>
+        <li><a href="about.html" >ABOUT</a></li>
+        <li><a href="contact.html" id="abt" >CONTACT US</a></li>
+      </ul>
+      </div>
+</nav>
+
+
+
+
+</article>
+
+
+<article class="feature">
+<h3>Timeline & missions</h3>
+<p>Follow human achievements in space — timelines, mission pages, and key milestones.</p>
+<img src="images/wallpaperbetter.jpg" alt="replace me" style="width:100%; height:300px; object-fit:cover; border-radius:8px; margin-top:12px">
+</article>
+</section>
+
+
+<!-- TEAM -->
+<section class="team">
+<div class="member">
+<img src="images/ilonmask.jpg" alt="Team member — replace me">
+<strong>Lead Educator</strong>
+<div class="muted">Creates the learning paths</div>
+</div>
+<div class="member">
+<img src="images/jif.webp" alt="Team member — replace me">
+<strong>Head Designer</strong>
+<div class="muted">Designs visuals & UI</div>
+</div>
+<div class="member">
+<img src="images/romanenko-768x768-1-250x333.jpg" alt="Team member — replace me">
+<strong>Developer</strong>
+<div class="muted">Builds interactive tools</div>
+</div>
+<div class="member">
+<img src="images/ff.webp" alt="Team member — replace me">
+<strong>Community Lead</strong>
+<div class="muted">Coordinates learners & events</div>
+</div>
+</section>
+
+
+<!-- TIMELINE -->
+<section class="timeline card" aria-label="Project timeline">
+<div class="step">
+<strong>2018</strong>
+<p>Idea & early prototypes</p>
+</div>
+<div class="step">
+<strong>2019</strong>
+<p>Alpha release — lessons & quizzes</p>
+</div>
+<div class="step">
+<strong>2021</strong>
+<p>Interactive simulations launched</p>
+</div>
+<div class="step">
+<strong>2024</strong>
+<p>Platform redesign & mobile-first launch</p>
+</div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta">
+<button class="btn">Join the journey</button>
+</section>
+
+
+</main>
+
+
+<footer>
+
+<div class="head1">
+
+ <ul class="list">
+    <li><h4>Legal </h4></li>
+    <li>Terms of Service</li>
+     <li>Privacy Policy</li>
+     <li>Cookies</li>
+ </ul>
+ <ul class="list">
+    <li><h4>Information </h4></li>
+    <li>FAQ</li>
+     <li>Blog</li>
+     <li>Support</li>
+ </ul>
+ <ul class="list">
+    <li><h4>Legal </h4></li>
+    <li>Terms of Service</li>
+     <li>Privacy Policy</li>
+     <li>Cookies</li>
+ </ul>
+ <ul class="subscribe">
+  <input type="email" id="email" name="email" placeholder="Enter your email" required>
+  <button type="submit">Subscribe</button>
+ </ul>
+</div>
+<hr  class="lineS">
+<div class="head2">
+  <img src="images/Blue Colorful Minimalist Astronomy Logo 1.png" alt="">
+ <ul class="footer-links">
+
+  <li>Terms</li>
+  <li>Privacy</li>
+  <li>Cookies</li>
+  
+ </ul>
+
+ <div class="social-link">
+  <img src="icons/Linkedin.png" alt="Linkedinimg">
+  <img src="icons/Facebook.png" alt="Facebookimg">
+  <img src="icons/Twitter.png" alt="Twitterimg">
+ </div>
+
+     </div>
+  </footer> 
+
+
+  <script>
+  const currentPage = window.location.pathname.split('/').pop();
+  const links = document.querySelectorAll('.nav-links a');
+
+  links.forEach(link => {
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    }
+  });
+</script>
+
+</body>
+</html>
