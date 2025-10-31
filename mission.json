@@ -1,54 +1,60 @@
 [
   {
-    "image": "Apollo",
+    "image": "Apollo.jpg",
     "name": "Apollo",
     "year": 1990,
     "agency": "NASA",
     "objectif": "Poser le premier homme sur la Lune."
   },
   {
+    "image" :"Voyager.jpg",
     "name": "Voyager",
     "year": 1977,
     "agency": "NASA",
     "objectif": "Explorer les planètes extérieures du système solaire."
   },
   {
-    "name": "Hubble Space Telescope",
+    "name": "Hubble Space Telescope.jpg",
     "year": 1990,
     "agency": "NASA",
     "objectif": "Observer les premières galaxies formées après le Big Bang."
   },
   {
-    "name": "James Webb Space Telescope",
+    "name": "James Webb Space Telescope.jpg",
     "year": 2021,
     "agency": "NASA / ESA / CSA",
     "objectif": "Observer les premières galaxies formées après le Big Bang."
   },
   {
+    "image":"Perseverance.jpg",
     "name": "Perseverance",
     "year": 2021,
     "agency": "NASA",
     "objectif": "Explorer Mars pour chercher des traces de vie ancienne."
   },
   {
+    "image":"Parker Solar Probe.jpg",
     "name": "Parker Solar Probe",
     "year": 2018,
     "agency": "NASA",
     "objectif": "Étudier le Soleil de plus près que jamais."
   },
   {
+     "image":"Artemis Program.jpg",
     "name": "Artemis Program",
     "year": 2025,
     "agency": "NASA, ESA, JAXA, CSA",
     "objectif": "Renvoyer des astronautes sur la Lune et y établir une base durable."
   },
   {
+    "image": "Mars Sample Return.jpg",
     "name": "Mars Sample Return",
     "year": 2025,
     "agency": "NASA / ESA",
     "objectif": "Ramener sur Terre les échantillons collectés par Perseverance."
   },
   {
+    "image": "LUVOIR Telescope",
     "name": "LUVOIR Telescope",
     "year": 2035,
     "agency": "NASA",

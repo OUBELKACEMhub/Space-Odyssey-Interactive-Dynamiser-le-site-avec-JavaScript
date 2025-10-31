@@ -9,6 +9,37 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
 </head>
+<style>
+  .Mission-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px;
+  padding: 50px;
+  margin-top: 5rem;
+}
+
+    .cell {
+      display: flex;
+      flex-direction: column;
+      border: 4px solid black;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #f8f8f8;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: 200;
+    }
+
+  
+    .cell > div:first-child {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+/*  */
+
+
+ 
+</style>
 <body>
       <nav class="header">
     <div class="header1-contenu">
@@ -100,133 +131,15 @@
 
 
 
+  <!-- missions -->
 
 
-           <!-- Mission -->
-  <div class="Mission-container" id="missionsGrid">
 
-   
-    <div class="cell">
-      <div class="Missions-image1"></div>
-      <div class="Missions-descrption2">
-        <ul>
-          <li class="child"><h3>🛰 Apollo 11</h3></li>
-          <li><b>Agence</b> : NASA</li>
-          <li><b>Date de lancement</b> : 1969</li>
-          <li><b>Objectif</b> : Poser le premier homme sur la Lune.</li>
-        </ul>
-      </div>
-    </div>
-
-    
-    <div class="cell">
-      <div class="Missions-image2"></div>
-      <div class="Missions-descrption2">
-        <ul>
-          <li class="child"><h3>🛰 Voyager</h3></li>
-          <li><b>Agence</b> : NASA</li>
-          <li><b>Date de lancement</b> : 1977</li>
-          <li><b>Objectif</b> : Explorer les planètes extérieures.</li>
-        </ul>
-      </div>
-    </div>
-
-    
-    <div class="cell">
-      <div class="Missions-image3"></div>
-      <div class="Missions-descrption2">
-        <ul>
-          <li class="child"><h3>🛰 Hubble Telescope</h3></li>
-          <li><b>Agence</b> : NASA</li>
-          <li><b>Date de lancement</b> : 1990</li>
-          <li><b>Objectif</b> : Observer l’univers depuis l’espace.</li>
-        </ul>
-      </div>
-    </div>
+  <div class="Mission-container" id="missionsGrid">  </div>
 
    
-    <div class="cell">
-      <div class="Missions-image4"></div>
-      <div class="Missions-descrption2">
-        <ul>
-          <li class="child"><h3>🌌 James Webb</h3></li>
-          <li><b>Agence</b> : NASA-ESA-CSA</li>
-          <li><b>Date de lancement</b> : 2021</li>
-          <li><b>Objectif</b> : Observer les galaxies après le Big Bang.</li>
-        </ul>
-      </div>
-    </div>
 
-   
-    <div class="cell">
-      <div class="Missions-image5"></div>
-      <div class="Missions-descrption2">
-        <ul>
-          <li class="child"><h3>🛰 Perseverance</h3></li>
-          <li><b>Agence</b> : NASA</li>
-          <li><b>Date de lancement</b> : 2021</li>
-          <li><b>Objectif</b> : Explorer Mars pour trouver des traces de vie.</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="cell">
-      <div class="Missions-image6"></div>
-      <div class="Missions-descrption2">
-        <ul>
-          <li class="child"><h3>☀️ Parker Solar Probe</h3></li>
-          <li><b>Agence</b> : NASA</li>
-          <li><b>Date de lancement</b> : 2018</li>
-          <li><b>Objectif</b> : Étudier le Soleil de près.</li>
-        </ul>
-      </div>
-    </div>
-
-   
-    <div class="cell">
-      <div class="Missions-image7"></div>
-      <div class="Missions-descrption2">
-        <ul>
-          <li class="child"><h3>🌕 Artemis Program</h3></li>
-          <li><b>Agence</b> : NASA-ESA</li>
-          <li><b>Date de lancement</b> : 2025 </li>
-          <li><b>Objectif</b> : Ramener l’homme sur la Lune.</li>
-        </ul>
-      </div>
-    </div>
-
-   
-    <div class="cell">
-      <div class="Missions-image8"></div>
-      <div class="Missions-descrption2">
-        <ul>
-          <li class="child"><h3>🛰 Mars Sample Return</h3></li>
-          <li><b>Agence</b> : NASA-ESA</li>
-          <li><b>Date de lancement</b> : 2025</li>
-          <li><b>Objectif</b> : Ramener des échantillons martiens.</li>
-        </ul>
-      </div>
-    </div>
-
-  
-    <div class="cell">
-      <div class="Missions-image9"></div>
-      <div class="Missions-descrption2">
-        <ul>
-          <li class="child"><h3>🪐 LUVOIR Telescope</h3></li>
-          <li><b>Agence</b> : NASA </li>
-          <li><b>Date de lancement</b> : 2035</li>
-          <li><b>Objectif</b> : Explorer les exoplanètes et galaxies.</li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-
-
-
-
-   <!-- Footer -->
+   <!-- footer -->
     
 <footer>
 
@@ -273,65 +186,126 @@
  </div>
 
      </div>
-  </footer>
-
-
-
-
-
-        
-        
+  </footer>    
 </body>
 <script>
-  const currentPage = window.location.pathname.split('/').pop();
-  const links = document.querySelectorAll('.nav-links a');
+// table missions
+let missions = [
+  {
+    "image": "Apollo.webp",
+    "name": "Apollo",
+    "year": 1969,
+    "agency": "NASA",
+    "type": "historique",
+    "objectif": "Poser le premier homme sur la Lune."
+  },
+  {
+    "image": "Voyager.jpg",
+    "name": "Voyager",
+    "year": 1977,
+    "agency": "NASA",
+    "type": "historique",
+    "objectif": "Explorer les planètes extérieures du système solaire."
+  },
+  {
+    "image": "Hubble Telescope.webp",
+    "name": "Hubble Space Telescope",
+    "year": 1990,
+    "agency": "NASA",
+    "type": "actuiel",
+    "objectif": "Observer les premières galaxies formées après le Big Bang."
+  },
+  {
+    "image": "james Web.png",
+    "name": "James Webb Space Telescope",
+    "year": 2021,
+    "agency": "NASA-ESA-CSA",
+    "type": "actuiel",
+    "objectif": "Observer les premières galaxies formées après le Big Bang."
+  },
+  {
+    "image": "Persererance.jpg",
+    "name": "Perseverance",
+    "year": 2021,
+    "agency": "NASA",
+    "type": "actuiel",
+    "objectif": "Explorer Mars pour chercher des traces de vie ancienne."
+  },
+  {
+    "image": "parker-solar-probe.jpeg",
+    "name": "Parker Solar Probe",
+    "year": 2018,
+    "agency": "NASA",
+    "type": "actuiel",
+    "objectif": "Étudier le Soleil de plus près que jamais."
+  },
+  {
+    "image": "Artemis.jpg",
+    "name": "Artemis Program",
+    "year": 2025,
+    "agency": "NASA-ESA-JAXA-CSA",
+    "type": "future",
+    "objectif": "Renvoyer des astronautes sur la Lune et y établir une base durable."
+  },
+  {
+    "image": "habitas.webp",
+    "name": "Mars Sample Return",
+    "year": 2025,
+    "agency": "NASA-ESA",
+    "type": "future",
+    "objectif": "Ramener sur Terre les échantillons collectés par Perseverance."
+  },
+  {
+    "image": "LUVOIR Telescope.jpg",
+    "name": "LUVOIR Telescope",
+    "year": 2035,
+    "agency": "NASA",
+    "type": "future",
+    "objectif": "Explorer les exoplanètes et étudier la formation des galaxies, des étoiles et des systèmes planétaires à travers l’Univers."
+  }
+];
 
-  links.forEach(link => {
-    const linkPage = link.getAttribute('href');
-    if (linkPage === currentPage) {
-      link.classList.add('active');
-    }
+
+function displayMissions(missionsToDisplay) {
+  const container = document.getElementById('missionsGrid');
+  container.innerHTML = ''; 
+
+  missionsToDisplay.forEach(mission => {
+    const div = document.createElement('div');
+    div.classList.add('cell');
+
+    div.innerHTML = `
+      <div style="background-image:url('images/${mission.image}'); height:200px; background-size:cover; background-position:center;"></div>
+      <div class="Missions-descrption2">
+        <h3>${mission.name}</h3>
+        <ul>
+          <li><strong>Agence:</strong> ${mission.agency}</li>
+          <li><strong>Année:</strong> ${mission.year}</li>
+          <li><strong>Type:</strong> ${mission.type}</li>
+          <li><strong>Objectif:</strong> ${mission.objectif}</li>
+        </ul>
+      </div>
+    `;
+    container.appendChild(div);
   });
-</script>
+}
 
-<script>
-const searchButton = document.querySelector('.recherche button');
-const agenceSelect = document.getElementById('ParAgence');
-const dateSelect = document.getElementById('ParDate');
-const typeSelect = document.getElementById('ParType');
-const missionsGrid = document.getElementById('missionsGrid');
-const missionCells = missionsGrid.querySelectorAll('.cell');
+// afficher tout les mission
+displayMissions(missions);
 
-searchButton.addEventListener('click', () => {
-  const agenceValue = agenceSelect.value.toLowerCase();
-  const dateValue = dateSelect.value;
-  const typeValue = typeSelect.value.toLowerCase();
+                  //filter
+document.querySelector('.recherche button').addEventListener('click', () => {
+  const agency = document.getElementById('ParAgence').value;
+  const year = document.getElementById('ParDate').value;
+  const type = document.getElementById('ParType').value;
 
-  missionCells.forEach(cell => {
-    const agenceText = cell.querySelector('li:nth-child(2)').textContent.toLowerCase();
-    const dateText = cell.querySelector('li:nth-child(3)').textContent;
-    const year = dateText.match(/\d{4}/)?.[0] || ''; // khraj juste l'année
-    let show = true;
-
-    // Filtrage agence
-    if (agenceValue && !agenceText.includes(agenceValue.toLowerCase())) {
-      show = false;
-    }
-
-    // Filtrage date
-    if (dateValue && year !== dateValue) {
-      show = false;
-    }
-
-    // Filtrage type
-    if (typeValue) {
-      if (typeValue === 'historique' && parseInt(year) >= 2020) show = false;
-      if (typeValue === 'actuiel' && (parseInt(year) < 2000 || parseInt(year) > 2025)) show = false;
-      if (typeValue === 'future' && parseInt(year) <= 2025) show = false;
-    }
-
-    cell.style.display = show ? '' : 'none';
+  const filtered = missions.filter(mission => {
+    return (agency === '' || mission.agency === agency) &&
+           (year === '' || mission.year == year) &&
+           (type === '' || mission.type === type);
   });
+
+  displayMissions(filtered);
 });
 </script>
 
