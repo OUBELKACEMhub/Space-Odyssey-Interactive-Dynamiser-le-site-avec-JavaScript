@@ -1,6 +1,6 @@
 let missions = [
   {
-    "image": "Apollo.webp",
+    "image": "apollo.webp",
     "name": "Apollo",
     "year": 1969,
     "agency": "NASA",
@@ -8,7 +8,7 @@ let missions = [
     "objectif": "Poser le premier homme sur la Lune."
   },
   {
-    "image": "Voyager.jpg",
+    "image": "voyager.jpg",
     "name": "Voyager",
     "year": 1977,
     "agency": "NASA",
@@ -32,7 +32,7 @@ let missions = [
     "objectif": "Observer les premières galaxies formées le Big Bang."
   },
   {
-    "image": "Persererance.jpg",
+    "image": "persererance.jpg",
     "name": "Perseverance",
     "year": 2021,
     "agency": "NASA",
