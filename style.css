@@ -47,13 +47,12 @@
  .header2-contenu {
   /* position: relative; */
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
     width: 100%;
     height: 10%;
     margin-top: 0;
-    gap: 20px;
+    gap: 150px;
     align-items: center;
-    justify-content: space-between;
     background-color: white;
      z-index: 11;
 }
@@ -72,7 +71,8 @@
 }
 
 .nav-links li a {
-  font-family: Arial, Helvetica, sans-serif;
+   font-family: var(--font-1), sans-serif;
+
 text-decoration: none;
  font-weight:300;
 color: black;
@@ -95,10 +95,10 @@ padding: 4px;
 
 
 #abt {
-  border-radius: 20px;
+  border-radius: 8px;
   color: white;
   background-color: #060b0d;
-  padding: 10px;
+  padding: 5px;
 }
 
 .nav-links li #abt.active {
@@ -716,15 +716,15 @@ button {
 .Missions-homepage {
     
     width: 100%;
-    height: 44rem;
+    height: 34rem;
     justify-content: flex-start;
     align-items: flex-start;
-    background: url("images/pexels-pixabay-2166.jpg") center / cover no-repeat;
+    background: url("images/image-about/pexels-pixabay-41949\ \(1\).jpg") center / cover no-repeat;
    
 }
 
 .Missions-homepage #text {
-  width: 15rem;
+  width: 30rem;
   height: 20rem;
   padding-left: 15rem;
   padding-top: 10rem;
@@ -746,10 +746,24 @@ button {
        .bar-container {
   width: 100%;
   display: flex;
-  justify-content: center;
-  background-color: #f5f5f5; 
+  justify-content: space-between;
+  gap: 200px;
+  background-color: #f1f1f1; 
   padding: 15px;
   border-radius: 8px;
+  width: 94%;
+  margin-left: 45px;
+  margin-top: 100px;
+}
+.recherche {
+  position: relative;
+  width: 400px;
+  
+}
+.recherche input {
+  display: flex;
+  position: absolute;
+  width: 100%;
 }
 
 .filter {
@@ -787,7 +801,7 @@ button {
       display: flex;
       flex-direction: column;
       border: 2px solid black;
-      border-radius: 10px;
+      border-radius: 5px;
       overflow: hidden;
       background: #f8f8f8;
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -849,6 +863,268 @@ button {
       color: #12910d;
       margin-bottom: 0.5rem;
     }
+    
+    .Mission-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 50px;
+  margin-top: 3rem;
+  background-color: white;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #2e2e2e;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cell:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.cell > div:first-child {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  filter: brightness(0.9);
+}
+
+.Missions-descrption2 {
+  padding: 15px 20px;
+  background-color: #ffffff;
+  color: #222;
+}
+
+.Missions-descrption2 h3 {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 1px;
+  color: #0c0c0c;
+  margin-bottom: 8px;
+}
+
+.Missions-descrption2 ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+
+.Missions-descrption2 li {
+  margin: 5px 0;
+  font-size: 15px;
+  color: #444;
+}
+
+.Missions-descrption2 li strong {
+  color: #111;
+}
+
+
+.Missions-descrption2 button {
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+.Missions-descrption2 button:hover {
+  background: linear-gradient(135deg, #0056b3, #003f8c);
+  transform: scale(1.05);
+}
+
+.delete-icon,.close-fav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-color: rgba(14, 13, 13, 0.8);
+  color: #fff;
+  border: none;
+  width: 26px;
+  height: 26px;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.delete-icon:hover {
+  background-color: #ff2020;
+  transform: scale(1.1);
+}
+
+.favorite-icon {
+  color: white;
+  cursor: pointer;
+  font-size: 28px;
+  transition: 0.3s;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  user-select: none;
+  text-shadow: 0 0 5px black;
+}
+
+.favorite-icon.active {
+  color: gold;
+  /* transform: scale(1.1); */
+}
+/* .close-fav {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background-color: rgba(14, 13, 13, 0.8);
+  color: white;
+  border: none;
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+ 
+}
+
+.close-fav:hover {
+  background-color: #ff2020;
+  transform: scale(1.1);
+} */
+
+
+/* .favoris-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 10px;
+  background-color: #fef4e8;
+} */
+
+.favoris-list .card {
+  border: 2px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.3s;
+}
+#favoris-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-rows:minmax(200px, 1fr) ;
+  gap: 15px;
+  align-items: start;
+}
+
+
+.favoris-list .card:hover {
+  transform: scale(1.05);
+}
+
+
+#favoritesPanel {
+  position: fixed;
+  top: 200px;
+  right: 2px;
+  width: 600px;
+  max-height: 700px;
+  background-color: #fef4e8;
+  padding: 15px;
+  border-radius: 12px;
+  border: 3px solid #222;
+  overflow-y: auto;
+  z-index: 9999;
+  display: none;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+  overflow-y:auto;
+}
+
+#favoritesPanel h1 {
+  font-family: 'orbitron';
+}
+
+
+
+#missionForm {
+  display: none;
+  position: absolute;
+  top: 100px;
+  right: 2px;
+  width: 380px;
+  background: rgb(24, 23, 23);
+  color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 15px;
+  z-index: 9999;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#missionForm input,
+#missionForm textarea,
+#missionForm select {
+  padding: 7px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #222;
+}
+
+#missionForm button {
+  background: linear-gradient(135deg, #007bff, #0048a5);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+#missionForm button:hover {
+  background: linear-gradient(135deg, #0056b3, #003f8c);
+  transform: scale(1.05);
+}
+
+.ajouter button {
+  background-color: #12204e;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.ajouter button:hover {
+  background-color: #1e7e34;
+  transform: scale(1.05);
+}
+:root {
+  --font-1: Inter Tight;
+}
 
 
   

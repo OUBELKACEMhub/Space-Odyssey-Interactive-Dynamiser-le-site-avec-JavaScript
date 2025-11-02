@@ -8,75 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
-<style>
-  .Mission-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 20px;
-  padding: 50px;
-  margin-top: 5rem;
-}
-
-    .cell {
-      display: flex;
-      flex-direction: column;
-      border: 4px solid black;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #f8f8f8;
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      font-weight: 200;
-    }
-
-  
-    .cell > div:first-child {
-      height: 200px;
-      background-size: cover;
-      background-position: center;
-    }
-   
-.favoris-list {
-  background-color: antiquewhite;
-  display: grid;
-  grid-template-columns: repeat(3, 230px); 
-  gap: 0;
-  padding: 10px;
-  margin-top: 0.5rem;
-  width: 700px;
-}
-
-.favoris-list .card {
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s;
-}
-
-.favoris-list .card:hover {
-  transform: scale(1.03);
-}
-
-
-    .favorite-icon {
-  color: white;          /* اللون الإفتراضي */
-  cursor: pointer;
-  font-size: 28px;
-  transition: color 0.2s ease;
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  user-select: none;
-}
-
-.favorite-icon.active {
-  color: gold;           /* اللون ملي تكون مختارة */
-}
- 
-
-
-</style>
 <body>
       <nav class="header">
     <div class="header1-contenu">
@@ -84,8 +18,8 @@
       <img src="images/Blue Colorful Minimalist Astronomy Logo 1.png" alt="icon">
       </div>
        <div id="shead1">
-        
         <input type="text" id="search" name="search" placeholder="Search...">
+        
         
         <select name="language" id="language">
         <option value="en">English</option>
@@ -129,21 +63,21 @@
     <h1>Journey Through Time & Space</h1>
     </div>
     </section>
-        <div class="dev">
+        <!-- <div class="dev">
            <h1  style="font-family: 'orbitron';"> 10 missions célèbres</h1>
-        </div>
+        </div> -->
 
          <div class="bar-container">
     <div class="filter">
         <div class="agence">  <select  id="ParAgence">
-        <option value="">Tous</option>  
+        <option value="">Agence</option>  
         <option value="NASA">NASA</option>
         <option value="NASA-ESA">NASA-ESA</option>
         <option value="NASA-ESA-CSA">NASA-ESA-CSA</option>
      </select></div>
         <div class="date">  
        <select  id="ParDate">
-       <option value=""></option>
+       <option value="">Date</option>
        <option value="1969">1969-07-16</option>
        <option value="1977">1977-09-05</option>
        <option value="2004">2004-03-02</option>
@@ -156,28 +90,76 @@
       </div>
 
         <div class="type"><select  id="ParType">
-       <option value="">Tous</option>
+       <option value="">Type</option>
        <option value="historique">historique</option>
        <option value="actuiel">actuiel </option>
        <option value="future">future </option>
      </select></div>
 
-        <div class="recherche"><input type="text" placeholder="search"></div>
+        
+         
     </div>
+    <div class="recherche"><input type="text" placeholder="search"></div>
+    <div class="ajouter"><button value="ajouter">Ajouter</button></div>
     </div>
   
-
-
+   <div style="display: flex;; justify-content: space-between; gap: 735px; margin-left: 45px;  line-height: 200%;font-family: var(--font-1), sans-serif;">
+    <div style="flex: 1;  font-size:15px;"><strong>Winning websites</strong>. Web space Exploration</div>
+    <div  style="flex: 1; font-size:15px;;">Best selection of Space websites. <strong>Web  Exploration  Space</strong> for your Descavering</div>
+   </div>
+  
 
   <!-- missions -->
 
 
-
+  <p  style="font-size:15px;   margin-left: 45px;  line-height: 200%;font-family: var(--font-1), sans-serif;">Discover the best website designs of the world. Awwwards recognizes the talent and effort of the best designers, web developers and digital agencies.</p>
   <div class="Mission-container" id="missionsGrid">  </div>
 
-  <form  class="favoris-list" id="favoris-list" style="display:none;">
 
+<form id="missionForm">
+ 
+  <input type="hidden" id="missionIndex"> <!-- id mission pour modification -->
+
+  <label>Nom:</label>
+  <input type="text" id="missionName" required><br>
+
+  <label>Année:</label>
+  <input type="number" id="missionYear" required><br>
+
+  <label>Agence:</label>
+  <input type="text" id="missionAgency" required><br>
+
+  <label>Type:</label>
+  <select id="missionType" required>
+    <option value="historique">Historique</option>
+    <option value="actuiel">Actuel</option>
+    <option value="future">Future</option>
+  </select><br>
+
+  <label>Objectif:</label>
+  <textarea id="missionObjectif" required></textarea><br>
+
+  <label>Image (nom du fichier):</label>
+  <input type="text" id="missionImage" placeholder="ex: apollo.jpg"><br>
+<div style="display: flex; justify-content: space-evenly;gap: 2px;">
+   <button type="submit"  style="background:#ccc;color:#000;border-radius:6px;padding:8px;border:1px solid #999;cursor:pointer;margin-top:6px;flex: 1;">💾 Enregistrer Mission</button>
+   <button type="button" id="cancelAdd" style="background:#ccc;color:#000;border-radius:6px;padding:8px;border:1px solid #999;cursor:pointer;margin-top:6px;flex: 1;">
+  Annuler
+</button>
+</div>
+ 
 </form>
+
+
+ <div id="favoritesPanel">
+
+  <div style="display: flex; justify-content: space-between;">
+    <h1 style="flex: 1;   width: 50%; ; ">Mission favorite</h1>
+  <button id="closeFavorites" class="close-fav"  style="flex1">×</button>
+  </div>
+  <div id="favoris-list"></div>
+</div>
+
 
    
 
@@ -230,252 +212,5 @@
      </div>
   </footer>    
 </body>
-<script>
-// table missions
-let missions = [
-  {
-    "image": "Apollo.webp",
-    "name": "Apollo",
-    "year": 1969,
-    "agency": "NASA",
-    "type": "historique",
-    "objectif": "Poser le premier homme sur la Lune."
-  },
-  {
-    "image": "Voyager.jpg",
-    "name": "Voyager",
-    "year": 1977,
-    "agency": "NASA",
-    "type": "historique",
-    "objectif": "Explorer les planètes extérieures du système solaire."
-  },
-  {
-    "image": "Hubble Telescope.webp",
-    "name": "Hubble Space Telescope",
-    "year": 1990,
-    "agency": "NASA",
-    "type": "actuiel",
-    "objectif": "Observer les premières galaxies formées après le Big Bang."
-  },
-  {
-    "image": "james Web.png",
-    "name": "James Webb Space Telescope",
-    "year": 2021,
-    "agency": "NASA-ESA-CSA",
-    "type": "actuiel",
-    "objectif": "Observer les premières galaxies formées après le Big Bang."
-  },
-  {
-    "image": "Persererance.jpg",
-    "name": "Perseverance",
-    "year": 2021,
-    "agency": "NASA",
-    "type": "actuiel",
-    "objectif": "Explorer Mars pour chercher des traces de vie ancienne."
-  },
-  {
-    "image": "parker-solar-probe.jpeg",
-    "name": "Parker Solar Probe",
-    "year": 2018,
-    "agency": "NASA",
-    "type": "actuiel",
-    "objectif": "Étudier le Soleil de plus près que jamais."
-  },
-  {
-    "image": "Artemis.jpg",
-    "name": "Artemis Program",
-    "year": 2025,
-    "agency": "NASA-ESA-JAXA-CSA",
-    "type": "future",
-    "objectif": "Renvoyer des astronautes sur la Lune et y établir une base durable."
-  },
-  {
-    "image": "habitas.webp",
-    "name": "Mars Sample Return",
-    "year": 2025,
-    "agency": "NASA-ESA",
-    "type": "future",
-    "objectif": "Ramener sur Terre les échantillons collectés par Perseverance."
-  },
-  {
-    "image": "LUVOIR Telescope.jpg",
-    "name": "LUVOIR Telescope",
-    "year": 2035,
-    "agency": "NASA",
-    "type": "future",
-    "objectif": "Explorer les exoplanètes et étudier la formation des galaxies, des étoiles et des systèmes planétaires à travers l’Univers."
-  }
-];
-
-
-
-
-
-// afficher les missions
-const favorites = [];
-
-// --- affiche les missions (assure-toi que chaque mission a la class "mission" et champs data-*) ---
-function displayMissions(missionsToDisplay) {
-  const container = document.getElementById('missionsGrid');
-  container.innerHTML = '';
-
-  missionsToDisplay.forEach((mission, idx) => {
-    const div = document.createElement('div');
-    div.className = 'cell mission';
-
-    div.innerHTML = `
-      <div style="background-image:url('images/${mission.image}'); height:200px; background-size:cover; background-position:center; position:relative;">
-        <div class="favorite-icon" 
-             data-name="${escapeHtml(mission.name)}"
-             data-agency="${escapeHtml(mission.agency)}"
-             data-year="${mission.year}"
-             onclick="toggleFavorite(this)" 
-             style="position:absolute; top:10px; right:10px; font-size:28px; cursor:pointer; ">
-          &#9733;
-        </div>
-      </div>
-      <div class="Missions-descrption2">
-        <h3 class="mission-name">${escapeHtml(mission.name)}</h3>
-        <ul>
-          <li class="mission-agency"><strong>Agence:</strong> ${escapeHtml(mission.agency)}</li>
-          <li class="mission-year"><strong>Année:</strong> ${mission.year}</li>
-          <li><strong>Type:</strong> ${escapeHtml(mission.type)}</li>
-          <li><strong>Objectif:</strong> ${escapeHtml(mission.objectif)}</li>
-        </ul>
-      </div>
-    `;
-    container.appendChild(div);
-  });
-
-  
-  applySavedFavoritesToIcons();
-}
-
-// helper pour échapper HTML (sécurité simple)
-function escapeHtml(text) {
-  if (!text && text !== 0) return '';
-  return String(text)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
-
-
-function toggleFavorite(iconEl) {
-  const name = iconEl.dataset.name;
-  const agency = iconEl.dataset.agency;
-  const year = iconEl.dataset.year;
-
-  // نجيب الصورة من المسار الأصلي فالمissions
-  const missionData = missions.find(m => m.name === name);
-  const image = missionData ? missionData.image : '';
-
-  iconEl.classList.toggle('active');
-
-  if (iconEl.classList.contains('active')) {
-    if (!favorites.find(f => f.name === name)) {
-      favorites.push({ name, agency, year, image }); // ✅ زدنا image هنا
-    }
-  } else {
-    const i = favorites.findIndex(f => f.name === name);
-    if (i !== -1) favorites.splice(i, 1);
-  }
-
-  saveFavorites();
-  renderFavoritesForm();
-}
-
-
-// afficher la liste des favoris dans le formulaire (#favoris-list)
-function renderFavoritesForm() {
-  const form = document.getElementById('favoris-list');
-  form.innerHTML = ''; // نحيدو القديم باش ما يتضاعفوش الكروت
-
-  favorites.forEach(f => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.padding = '0';
-    card.style.margin = '6px';
-    card.style.overflow = 'hidden';
-    card.style.border = '4px solid black';
-    card.style.borderRadius = '10px';
-    
-    
-
-    card.innerHTML = `
-      <div style="background-image:url('images/${f.image}'); height:150px; background-size:cover; background-position:center;"></div>
-      <div style="padding:8px; color :black;">
-        <strong style="color : ">${escapeHtml(f.name)}</strong><br>
-        <small>${escapeHtml(f.agency)} — ${escapeHtml(f.year)}</small><br>
-        <button type="button" onclick="removeFavorite('${escapeAttr(f.name)}')" 
-          style="cursor:pointer;margin-top:5px;padding:6px 8px;border-radius:6px;border:1px solid #ccc;background:black;color:white;">
-          Remove
-        </button>
-      </div>
-    `;
-    form.appendChild(card);
-  });
-}
-
-// remove favorite depuis la liste (aussi met à jour l'icone correspondante)
-function removeFavorite(name) {
-  const idx = favorites.findIndex(f => f.name === name);
-  if (idx !== -1) favorites.splice(idx, 1);
-
-  // désactiver l'icone correspondante dans la grille
-  document.querySelectorAll('.favorite-icon').forEach(ic => {
-    if (ic.dataset.name === name) ic.classList.remove('active');
-  });
-
-  saveFavorites();
-  renderFavoritesForm();
-}
-
-function clearAllFavorites() {
-  favorites.length = 0;
-  document.querySelectorAll('.favorite-icon').forEach(ic => ic.classList.remove('active'));
-  saveFavorites();
-  renderFavoritesForm();
-}
-
-// persistence localStorage
-function saveFavorites() {
-  localStorage.setItem('space_favorites', JSON.stringify(favorites));
-}
-function loadFavorites() {
-  const saved = JSON.parse(localStorage.getItem('space_favorites') || '[]');
-  if (Array.isArray(saved) && saved.length) {
-    saved.forEach(s => { if (!favorites.find(f => f.name === s.name)) favorites.push(s); });
-  }
-}
-
-// après que les icons existent، on applique active sur celles sauvegardées
-function applySavedFavoritesToIcons() {
-  if (favorites.length === 0) return;
-  document.querySelectorAll('.favorite-icon').forEach(ic => {
-    if (favorites.find(f => f.name === ic.dataset.name)) {
-      ic.classList.add('active');
-    } else {
-      ic.classList.remove('active');
-    }
-  });
-}
-
-// petits helpers pour échapper attributs utilisés dans onclick
-function escapeAttr(s) {
-  return String(s).replace(/'/g, "\\'");
-}
-
-// --- initialisation ---
-loadFavorites();
-displayMissions(missions); // rend la grille
-renderFavoritesForm(); 
-
-</script>
-
-
-
-
+<script src="mission.js" ></script>
 </html>
