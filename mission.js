@@ -24,7 +24,7 @@ let missions = [
     "objectif": "Observer les premières galaxies formées  le Big Bang."
   },
   {
-    "image": "james Web.png",
+    "image": "james web.png",
     "name": "James Webb Space",
     "year": 2021,
     "agency": "NASA-ESA-CSA",
