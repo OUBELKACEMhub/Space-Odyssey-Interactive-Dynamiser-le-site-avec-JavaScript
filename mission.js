@@ -92,7 +92,7 @@ function displayMissions(missionsToDisplay) {
       
       <button class="delete-icon" onclick="deleteMission('${mission.name}')">×</button>
       
-      <!-- أيقونة favoris -->
+      <!-- favoris -->
       <div class="favorite-icon" 
            data-name="${escapeHtml(mission.name)}"
            data-agency="${escapeHtml(mission.agency)}"
@@ -113,6 +113,7 @@ function displayMissions(missionsToDisplay) {
       </ul>
       <button onclick="editMission(${idx})">✏️ Modifier</button>
     </div>
+    
   `;
   container.appendChild(div);
 });
@@ -222,6 +223,7 @@ function clearAllFavorites() {
 function saveFavorites() {
   localStorage.setItem('space_favorites', JSON.stringify(favorites));
 }
+
 function loadFavorites() {
   const saved = JSON.parse(localStorage.getItem('space_favorites') || '[]');
   if (Array.isArray(saved) && saved.length) {
@@ -329,6 +331,11 @@ form.addEventListener('submit', (e) => {
   document.getElementById('missionIndex').value = '';
   displayMissions(missions);
 });
+window.addEventListener('load', () => {
+  missionForm.style.display = 'none';
+});
+
+
 function editMission(index) {
   const m = missions[index];
   document.getElementById('missionIndex').value = index;
@@ -376,10 +383,22 @@ if (cancelBtn) {
 function deleteMission(name) {
   const index = missions.findIndex(m => m.name === name);
   if (index !== -1 && confirm("Voulez-vous vraiment supprimer cette mission ?")) {
+ 
     missions.splice(index, 1);
+
+ 
+    const favIndex = favorites.findIndex(f => f.name === name);
+    if (favIndex !== -1) {
+      favorites.splice(favIndex, 1);
+      saveFavorites();       
+      renderFavoritesForm(); 
+    }
+
+  
     displayMissions(missions);
   }
 }
+
 
 
 
