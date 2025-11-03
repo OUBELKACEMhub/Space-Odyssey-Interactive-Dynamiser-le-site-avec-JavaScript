@@ -617,9 +617,10 @@ footer .head2 {
   grid-template-columns: 1fr 1fr; 
   height: 100vh;
   width: 1500px;
-  background: url("images/background2.jpg") center/cover no-repeat;
+  background-color: #1a1818;
   padding: 50px;
-
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 .contact-image {
@@ -727,12 +728,12 @@ button {
   width: 30rem;
   height: 20rem;
   padding-left: 15rem;
-  padding-top: 10rem;
+  padding-top: 6rem;
 
 }
 
 .Missions-homepage #text h1 {
-  color: white;
+  color: #33398de0;
   font-size: 4rem;
   text-align: left;
   line-height: 4rem;
@@ -801,7 +802,7 @@ button {
       display: flex;
       flex-direction: column;
       border: 2px solid black;
-      border-radius: 5px;
+      border-radius: 2px;
       overflow: hidden;
       background: #f8f8f8;
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -815,33 +816,6 @@ button {
       background-position: center;
     }
 
-    .Missions-image1 { 
-      background-image: url("images/edu_srch_celebrate_the_50th_anniversary_apollo11.webp"); 
-    }
-    .Missions-image2 {
-       background-image: url("images/voyage mission.jpg"); 
-     }
-    .Missions-image3 {
-       background-image: url("images/hubble space telescope 1.png");
-       }
-    .Missions-image4 { 
-      background-image: url("images/james web.png");
-   }
-    .Missions-image5 {
-       background-image: url("images/percerance.jpg");
-       }
-    .Missions-image6 {
-       background-image: url("images/parker-solar-probe-records-titre-1170x678.jpeg"); 
-      }
-    .Missions-image7 { 
-      background-image: url("images/Artemis2.jpg");
-     }
-    .Missions-image8 { 
-      background-image: url("images/hubble-space-telescope-hst-6.webp"); 
-    }
-    .Missions-image9 { 
-      background-image: url("images/LUVOIR-A_milkyway_full.jpg"); 
-    }
 
     
     .Missions-descrption2 {
@@ -1088,7 +1062,7 @@ button {
 }
 
 .ajouter button:hover {
-  background-color: #1e7e34;
+  background-color: #464646;
   transform: scale(1.05);
 }
 :root {
