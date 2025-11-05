@@ -1,74 +1,74 @@
 let missions = [
   {
-    "image": "apollo.webp",
+    "image": "https://ichef.bbci.co.uk/images/ic/480xn/p07fsngr.jpg.webp",
     "name": "Apollo",
     "year": 1969,
     "agency": "NASA",
-    "type": "historique",
+    "type": "Historical",
     "objectif": "Poser le premier homme sur la Lune."
   },
   {
-    "image": "voyager.jpg",
+    "image": "https://ggba.swiss/app/uploads/2023/10/Compremium-NASA-2360x1622-1.jpeg",
     "name": "Voyager",
     "year": 1977,
     "agency": "NASA",
-    "type": "historique",
+    "type": "Historical",
     "objectif": "Explorer les planètes extérieures du système solaire."
   },
   {
-    "image": "Hubble Telescope.webp",
+    "image": "https://scitechdaily.com/images/Hubble-Space-Telescope-Inside.gif",
     "name": "Hubble Space Telescope",
     "year": 1990,
     "agency": "NASA",
-    "type": "actuiel",
+    "type": "Historical",
     "objectif": "Observer les premières galaxies formées  le Big Bang."
   },
   {
-    "image": "james web.png",
+    "image": "https://popsciences.universite-lyon.fr/app/uploads/2020/04/hubble_in_orbit1_credit-european-space-agency_600.jpg",
     "name": "James Webb Space",
     "year": 2021,
     "agency": "NASA-ESA-CSA",
-    "type": "actuiel",
+    "type": "Current",
     "objectif": "Observer les premières galaxies formées le Big Bang."
   },
   {
-    "image": "persererance.jpg",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvhwP2Kp6o6OHPY_s8hvWIoeIppRuphOf1-w&s",
     "name": "Perseverance",
     "year": 2021,
     "agency": "NASA",
-    "type": "actuiel",
+    "type": "Current",
     "objectif": "Explorer Mars pour chercher des traces de vie ancienne."
   },
   {
-    "image": "parker-solar-probe.jpeg",
+    "image": "https://parkersolarprobe.jhuapl.edu/Multimedia/ApprovedMedia/Images/Renderings/md/SolarArraysDeployAlternateSTILL2.jpg",
     "name": "Parker Solar Probe",
     "year": 2018,
     "agency": "NASA",
-    "type": "actuiel",
+    "type": "Current",
     "objectif": "Étudier le Soleil de plus près que jamais."
   },
   {
-    "image": "Artemis.jpg",
+    "image": "https://www.universetoday.com/article_images/Artemis-1-SLS-Launch-Science_20250722_141905.webp",
     "name": "Artemis Program",
     "year": 2025,
     "agency": "NASA-ESA-JAXA-CSA",
-    "type": "future",
+    "type": "Future",
     "objectif": "Renvoyer des astronautes sur la Lune et y établir une base durable."
   },
   {
-    "image": "habitas.webp",
+    "image": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/resources/detail_files/6/6199_mars-human-exploration-art-astronauts-outpost-habitat-connection-full2.jpg?w=2850&h=2265&fit=clip&crop=faces%2Cfocalpoint",
     "name": "Mars Sample Return",
     "year": 2025,
     "agency": "NASA-ESA",
-    "type": "future",
+    "type": "Future",
     "objectif": "Ramener sur Terre les échantillons collectés par Perseverance."
   },
   {
-    "image": "LUVOIR Telescope.jpg",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiXPpT_UXPkt_CDxy5GIevzybBL66jSF6fAw&s",
     "name": "LUVOIR Telescope",
     "year": 2035,
     "agency": "NASA",
-    "type": "future",
+    "type": "Future",
     "objectif": "Explorer les exoplanètes et étudier la formation des galaxies, des étoiles et des systèmes planétaires à travers l’Univers."
   }
 ];
@@ -86,7 +86,7 @@ function displayMissions(missionsToDisplay) {
   div.className = 'cell mission';
 
   div.innerHTML = `
-    <div style="background-image:url('images/${mission.image}'); height:200px; background-size:cover; background-position:center; position:relative;">
+    <div style="background-image:url('${mission.image}'); height:200px; background-size:cover; background-position:center; position:relative;">
       
      
       
@@ -111,7 +111,7 @@ function displayMissions(missionsToDisplay) {
         <li><strong>Type:</strong> ${escapeHtml(mission.type)}</li>
         <li><strong>Objectif:</strong> ${escapeHtml(mission.objectif)}</li>
       </ul>
-      <button onclick="editMission(${idx})">✏️ Modifier</button>
+      <button onclick="editMission(${idx})">✏️ Edit</button>
     </div>
     
   `;
@@ -180,7 +180,7 @@ function renderFavoritesForm() {
     
 
     card.innerHTML = `
-      <div style="background-image:url('images/${f.image}'); height:150px; background-size:cover; background-position:center;"></div>
+      <div style="background-image:url('${f.image}'); height:150px; background-size:cover; background-position:center;"></div>
       <div style="padding:8px; color :black;">
         <strong style="color : ">${escapeHtml(f.name)}</strong><br>
         <small>${escapeHtml(f.agency)} — ${escapeHtml(f.year)}</small><br>
@@ -394,8 +394,6 @@ function deleteMission(name) {
     displayMissions(missions);
   }
 }
-
-
 
 
 
