@@ -1,25 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Space Odyssey</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Odyssey</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" rel="stylesheet">
+^<style>
+    
+
+    /* Title Section */
+    .contact-title {
+      text-align: center;
+      padding-top: 80px;
+      padding-bottom: 20px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 2.5rem;
+      color: #020200;
+      text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+      letter-spacing: 2px;
+    }
+
+    /* Container */
+    .contact-containner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      border-radius: 10px;
+      padding: 60px;
+      margin: 0 auto 100px;
+      background: rgb(221, 219, 219);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+      width: 80%;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Left Image */
+    .contact-image {
+      background-image: url("images/unsplash_crygQ7In_FE (1).png");
+      width: 500px;
+      height: 600px;
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      transition: transform 0.4s ease;
+    }
+    .contact-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Form Section */
+    .contact-form {
+      width: 450px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 90%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      font-size: 15px;
+    }
+
+    .contact-form textarea {
+      resize: none;
+      height: 120px;
+    }
+
+    .contact-form button {
+      padding: 12px;
+      background-color: #ffd700;
+      color: #0a0a2a;
+      font-weight: 700;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact-form button:hover {
+      background-color: #ffcc00;
+      transform: scale(1.05);
+    }
+
+    .error {
+      color: #ff6b6b;
+      font-size: 14px;
+      margin-top: -5px;
+    }
+
+    .invalide {
+      border: 2px solid #ff6b6b !important;
+    }
+
+    #success {
+      margin-top: 10px;
+      color: #00ff99;
+      font-weight: bold;
+      text-align: center;
+    }
+  </style>
 </head>
-<body >
-  <nav class="header">
+
+<body>
+      <nav class="header">
     <div class="header1-contenu">
       <div class="logo1">
       <img src="images/Blue Colorful Minimalist Astronomy Logo 1.png" alt="icon">
       </div>
        <div id="shead1">
-      
         <input type="text" id="search" name="search" placeholder="Search...">
+        
+        
         <select name="language" id="language">
         <option value="en">English</option>
         <option value="ar">Arabic</option>
         <option value="fr">Français</option>
         </select>
+        <div class="icon"><img src="icons/star-plan.png" alt="star-plan" style="width: 28px;"></div>
          <div class="iconNotfc"><img src="icons/Header Notification button.png" alt="Notificationicons"></div>
           <div class="avatar"><img src="icons/Avatar.png" alt="profile"></div>
      </div>
@@ -39,49 +150,48 @@
         </a>
       </div>
 
-      <ul class="nav-links">
+     <ul class="nav-links">
         <li><a href="index.html" >HOME</a></li>
         <li><a href="planets.html" >PLANETS</a></li>
-        <li><a href="mission.html" >MISSION</a></li>
-        <li><a href="about.html" >ABOUT</a></li>
+        <li><a href="mission.html">MISSION</a></li>
+        <li>ABOUT</li>
         <li><a href="contact.html" id="abt" >CONTACT US</a></li>
       </ul>
       </div>
 </nav>
 
-<div class="contactpage">
 
-<section class="sel-contact">
-  <div class="contact-image"></div>
+  <h1 class="contact-title">Get in Touch with >Space Odyssey</span></h1>
 
-  <div class="contact">
-    <form   onsubmit="return validation()">
-      <div class="formg">
+  <div class="contact-containner">
+    <div class="contact-image"></div>
+
+    <div class="contact-form">
+      <form onsubmit="return validation()">
         <input type="text" placeholder="First Name" id="firstName">
+        <span id="firstNameError" class="error"></span>
+
         <input type="text" placeholder="Last Name" id="lastName">
-      </div>
+        <span id="lastNameError" class="error"></span>
 
-      <div class="formg">
-        <input type="email" placeholder="Email"  id="email">
+        <input type="email" placeholder="Email" id="email">
+        <span id="emailError" class="error"></span>
+
         <input type="text" placeholder="Phone Number" id="phoneNumber">
-      </div>
+        <span id="phoneError" class="error"></span>
 
-      <div class="formg">
-        <label>Select Subject?</label>
-        <div>
-          <input type="radio" name="subject"> General Inquiry
-          <input type="radio" name="subject"> Support
-          <input type="radio" name="subject"> Feedback
-        </div>
-      </div>
+        <textarea placeholder="Message" id="message"></textarea>
+        <span id="messageError" class="error"></span>
 
-      <textarea placeholder="Message"></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+        <button type="submit">Send Message</button>
+        <p id="success"></p>
+      </form>
+    </div>
   </div>
-</section>
 
-
+  
+   <!-- footer -->
+    
 <footer>
 
 <div class="head1">
@@ -127,68 +237,66 @@
  </div>
 
      </div>
-  </footer>
+  </footer> 
 
+  <script>
+    "use strict";
+    function validation() {
+      const firstName = document.getElementById("firstName");
+      const lastName = document.getElementById("lastName");
+      const email = document.getElementById("email");
+      const phone = document.getElementById("phoneNumber");
+      const message = document.getElementById("message");
 
+      const firstNameError = document.getElementById("firstNameError");
+      const lastNameError = document.getElementById("lastNameError");
+      const emailError = document.getElementById("emailError");
+      const phoneError = document.getElementById("phoneError");
+      const messageError = document.getElementById("messageError");
+      const success = document.getElementById("success");
 
+      const nameRegex = /^[a-zA-Z]{2,}$/;
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^[0-9]{6,15}$/;
+      const messageRegex = /^.{10,}$/;
 
-    <script>
-function validation() {
+      let valid = true;
 
-  const firstName = document.getElementById("firstName").value.trim();
-  const lastName = document.getElementById("lastName").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phoneNumber = document.getElementById("phoneNumber").value.trim();
-  const subject = document.querySelector('input[name="subject"]:checked');
-  const message = document.querySelector("textarea").value.trim();
+      success.textContent = "";
+      [firstName, lastName, email, phone, message].forEach(i => i.classList.remove("invalide"));
+      [firstNameError, lastNameError, emailError, phoneError, messageError].forEach(e => e.textContent = "");
 
-
-  if (firstName === "") {
-    alert("Please enter your first name.");
-    return false;
-  }
-
-
-  if (lastName === "") {
-    alert("Please enter your last name.");
-    return false;
-  }
-
-
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
-    alert("Please enter a valid email address.");
-    return false;
-  }
-
-
-  const phonePattern = /^[0-9]{6,15}$/;
-  if (!phonePattern.test(phoneNumber)) {
-    alert("Please enter a valid phone number (digits only).");
-    return false;
-  }
-
-  if (!subject) {
-    alert("Please select a subject.");
-    return false;
-  }
-
-
-  if (message === "") {
-    alert("Please enter your message.");
-    return false;
-  }
-
- 
-  alert("Your message has been sent successfully 🚀");
-  return true;
-}
-</script>
-
- 
-
-
-
-
+      if (!nameRegex.test(firstName.value.trim())) {
+        firstName.classList.add("invalide");
+        firstNameError.textContent = "Invalid first name";
+        valid = false;
+      }
+      if (!nameRegex.test(lastName.value.trim())) {
+        lastName.classList.add("invalide");
+        lastNameError.textContent = "Invalid last name";
+        valid = false;
+      }
+      if (!emailRegex.test(email.value.trim())) {
+        email.classList.add("invalide");
+        emailError.textContent = "Invalid email format";
+        valid = false;
+      }
+      if (!phoneRegex.test(phone.value.trim())) {
+        phone.classList.add("invalide");
+        phoneError.textContent = "Phone number must have 6–15 digits";
+        valid = false;
+      }
+      if (!messageRegex.test(message.value.trim())) {
+        message.classList.add("invalide");
+        messageError.textContent = "Message must be at least 10 characters";
+        valid = false;
+      }
+      if (valid) {
+        success.textContent = "✅ Message sent successfully!";
+        document.querySelector("form").reset();
+      }
+      return false;
+    }
+  </script>
 </body>
 </html>

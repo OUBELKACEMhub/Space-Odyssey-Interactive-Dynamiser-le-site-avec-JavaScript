@@ -118,12 +118,8 @@ function displayMissions(missionsToDisplay) {
   container.appendChild(div);
 });
 
-
-
   applySavedFavoritesToIcons();
-
-
-  
+ 
 }
 
 const closeFavoritesBtn = document.getElementById('closeFavorites');

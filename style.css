@@ -605,7 +605,15 @@ footer .head2 {
 
 
 
-                /* contact style*/
+                /* contact style
+
+
+
+
+
+
+
+                
 
 .contactpage{
   background-color: #000;
@@ -624,12 +632,13 @@ footer .head2 {
 }
 
 .contact-image {
+flex :1;
   background: url("images/unsplash_crygQ7In_FE\ \(1\).png") center/cover no-repeat;
 }
 
 .contact {
-  background-color: ##060b0d;
-  color: white;
+  background-color: #ccc;
+  color: rgb(0, 0, 0);
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -658,33 +667,7 @@ button {
   color: white;
   font-weight: bold;
   cursor: pointer;
-}
-
-
-@media (max-width: 992px) {
-  .sel-contact {
-    grid-template-columns: 1fr; 
-    height: auto;
-    padding: 30px;
-  }
-
-  .contact-image {
-    height: 300px; /
-  }
-
-  .contact {
-    padding: 30px;
-  }
-
-  .formg {
-    flex-direction: column;
-  }
-}
-
-
-
-
-
+} */
 
 /* Mission Style */
 
